@@ -8,7 +8,7 @@ const Pending = () => {
     return (
         <main className="pending">
             <h1>In Progress</h1>
-            {books.length > 0 ? <p>You are currently reading {books.length} books</p> : <p>Congratulations, You have completed your reading list! Start a new read by filling the form below.</p>}
+            {books.length > 0 ? <p>You are currently reading {books.length} books</p> : <p>You have zero books on your reading list! Start a new read by filling the form below.</p>}
             <BookList />
             <BookForm />
         </main>
