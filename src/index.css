@@ -197,6 +197,7 @@ input[type="submit"] {
     width: 90%;
     padding: 1rem;
     gap: 0;
+    z-index: 1;
   }
   nav a {
     font-size: 2rem;
