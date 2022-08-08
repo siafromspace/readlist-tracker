@@ -9,8 +9,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar />
         <BookContextProvider>
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/Pending" element={<Pending />}></Route>

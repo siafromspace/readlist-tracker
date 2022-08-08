@@ -16,10 +16,10 @@ const BookForm = () => {
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Enter Book Title" onChange={(e) => {
                 setTitle(e.target.value)
-            }} />
+            }} required />
             <input type="text" placeholder="Enter Book Author" onChange={(e) => {
                 setAuthor(e.target.value)
-            }} />
+            }} required />
             <input type="submit" />
         </form>
     );
