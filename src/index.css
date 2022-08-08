@@ -156,6 +156,7 @@ input[type="submit"] {
     font-size: 2rem;
   }
   a:hover {
+    border-right: 0;
     border-top: 4px solid #262322;
   }
   section {
