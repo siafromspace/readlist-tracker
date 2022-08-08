@@ -153,7 +153,10 @@ input[type="submit"] {
     gap: 0;
   }
   nav a {
-    font-size: 3rem;
+    font-size: 2rem;
+  }
+  a:hover {
+    border-top: 4px solid #262322;
   }
   section {
     max-width: 100%;
