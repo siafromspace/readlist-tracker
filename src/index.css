@@ -15,7 +15,7 @@ body {
   display: flex;
   background-color: #f2e5d7;
   color: #262322;
-  /* overflow: hidden; */
+  overflow: hidden;
   /* justify-content: center; */
 }
 #root {
@@ -234,7 +234,7 @@ input[type="submit"] {
     height: 70vh;
   }
 }
-@media (max-height: 650px) {
+/* @media (max-height: 650px) {
   .App {
     height: 120vh;
   }
@@ -251,4 +251,4 @@ input[type="submit"] {
     height: 60%;
     overflow: none;
   }
-}
+} */
