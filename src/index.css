@@ -56,7 +56,7 @@ a:hover {
 }
 .home--img {
   max-width: 100%;
-  height: auto;
+  height: 400px;
 }
 /* a:active {
   border-right: 2px solid black;
