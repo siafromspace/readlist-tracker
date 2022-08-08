@@ -7,7 +7,7 @@ const BookList = () => {
     return (
         <section className="book-list">
             {books.map(book => {
-                return <BookDetails title={book.title} author={book.author} id={book.id} />
+                return <BookDetails title={book.title} author={book.author} id={book.id} key={book.id} />
             })}
         </section>
     );

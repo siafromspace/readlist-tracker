@@ -7,7 +7,7 @@ const DoneList = () => {
     return (
         <section className="done-list">
             {completedBooks.map(book => {
-                return <DoneDetails title={book.title} author={book.author} id={book.id} />
+                return <DoneDetails title={book.title} author={book.author} id={book.id} key={book.id} />
             })}
         </section>
     );

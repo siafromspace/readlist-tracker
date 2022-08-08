@@ -9,6 +9,8 @@ const BookForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         addBooks(title, author)
+        setTitle('')
+        setAuthor('')
     }
 
 
@@ -16,10 +18,10 @@ const BookForm = () => {
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Enter Book Title" onChange={(e) => {
                 setTitle(e.target.value)
-            }} required />
+            }} value={title} required />
             <input type="text" placeholder="Enter Book Author" onChange={(e) => {
                 setAuthor(e.target.value)
-            }} required />
+            }} value={author} required />
             <input type="submit" />
         </form>
     );
