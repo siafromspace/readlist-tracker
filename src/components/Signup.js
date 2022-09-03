@@ -2,8 +2,7 @@ import "./auth.css"
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react";
 import {
-    createUserWithEmailAndPassword,
-    onAuthStateChanged
+    createUserWithEmailAndPassword
 } from "firebase/auth";
 import { auth, provider } from "../firebase-config";
 import { signInWithPopup } from "firebase/auth";

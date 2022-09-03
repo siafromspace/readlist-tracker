@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import { createContext, useEffect, useState } from "react";
 import { addDoc, collection, getDocs, doc, deleteDoc, getDoc, serverTimestamp } from "firebase/firestore"
 import { db, auth } from "../firebase-config"
@@ -53,7 +52,7 @@ const BookContextProvider = (props) => {
             setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         }
         getBooks()
-    }, [addBooks, removeBooks, deleteBooks])
+    }, [addBooks, removeBooks, deleteBooks, booksCollectionRef])
 
 
     useEffect(() => {
@@ -62,7 +61,7 @@ const BookContextProvider = (props) => {
             setCompletedBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
         }
         getCompletedBooks()
-    }, [removeBooks, deleteDoneBooks])
+    }, [removeBooks, deleteDoneBooks, completedBooksCollectionRef])
 
 
     return (
