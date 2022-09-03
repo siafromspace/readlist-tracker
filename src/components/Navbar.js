@@ -1,9 +1,9 @@
-import { FaHome, FaBook, FaCheckDouble } from "react-icons/fa"
+import { FaHome, FaBook, FaCheckDouble, FaSignOutAlt } from "react-icons/fa"
 import { NavLink } from "react-router-dom";
 import { BookContext } from "../context/BookContext";
 import { useContext, useEffect, useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ isAuth }) => {
     const { books } = useContext(BookContext)
 
     const [matches, setMatches] = useState(
@@ -42,6 +42,14 @@ const Navbar = () => {
                     }
                 }}
                 to="/Completed"><FaCheckDouble /></NavLink>
+            {isAuth && <NavLink
+                style={({ isActive }) => {
+                    return {
+                        borderRight: !matches && isActive ? "4px solid #262322" : "",
+                        borderTop: matches && isActive ? "4px solid #262322" : ""
+                    }
+                }}
+                to="/logout"><FaSignOutAlt /></NavLink>}
         </nav>
     );
 }

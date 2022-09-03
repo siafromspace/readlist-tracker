@@ -1,9 +1,3 @@
-:root {
-  --color-one: #fce2db;
-  --color-two: #ff8fb1;
-  --color-three: #b270a2;
-  --color-four: #7a4495;
-}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -137,7 +131,7 @@ section > div h1 {
 .book--detail .detail--icons > *:active {
   transform: scale(0.9);
 }
-form {
+.book--form {
   position: fixed;
   top: 65%;
   /* left: 20%; */
@@ -152,17 +146,17 @@ form {
   /* background-color: #262322; */
   color: #f2e5d7;
 }
-input {
+.book--form input {
   width: 99%;
   height: 33%;
   border-radius: 10px;
   border: none;
   padding-left: 1rem;
 }
-input:focus{
+.book--form input:focus{
   outline: none;
 }
-input[type="submit"] {
+.book--form input[type="submit"] {
   background-color: #262322;
   color: #f2e5d7;
   cursor: pointer;
@@ -220,7 +214,7 @@ input[type="submit"] {
     width: 90%;
     text-align: left;
   }
-  form {
+  .book--form {
     width: 80%;
     /* height: 15%;
     top: 70%; */

@@ -3,8 +3,14 @@ import { BookContext } from "../context/BookContext";
 import BookList from "./BookList";
 import BookForm from "./BookForm";
 
-const Pending = () => {
+const Pending = ({ isAuth }) => {
     const { books } = useContext(BookContext)
+    if (!isAuth) {
+        return (
+            <main className="pending">
+                <h1>You need to log in.</h1>
+            </main>)
+    }
     return (
         <main className="pending">
             <h1>In Progress</h1>
