@@ -1,15 +1,17 @@
 import "./auth.css"
 import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react";
-import {
-    createUserWithEmailAndPassword
-} from "firebase/auth";
+import { useContext, useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, provider } from "../firebase-config";
 import { signInWithPopup } from "firebase/auth";
+import { BookContext } from "../context/BookContext";
 
 const Signup = ({ setIsAuth }) => {
+    const { addUsers } = useContext(BookContext)
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
     const [errorText, setErrorText] = useState("")
     const navigate = useNavigate()
 
@@ -25,6 +27,7 @@ const Signup = ({ setIsAuth }) => {
             navigate("/")
             localStorage.setItem("isAuth", true)
             setIsAuth(true)
+            addUsers(firstName, lastName)
         } catch (error) {
             console.log(error.message);
             setErrorText(error.message)
@@ -46,11 +49,16 @@ const Signup = ({ setIsAuth }) => {
                 <div>
                     {errorText && <p className="error--text">{errorText}</p>}
                     <label>First Name</label>
-                    <input type="text" placeholder="First Name" />
+                    <input type="text" placeholder="First Name"
+                        onChange={(e) => setFirstName(e.target.value)}
+                        value={firstName}
+                    />
                 </div>
                 <div>
                     <label>Last Name</label>
-                    <input type="text" placeholder="Last Name" />
+                    <input type="text" placeholder="Last Name"
+                        onChange={(e) => setLastName(e.target.value)}
+                        value={lastName} />
                 </div>
                 <div>
                     <label>Email</label>

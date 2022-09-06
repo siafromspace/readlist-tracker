@@ -3,10 +3,10 @@ import { useContext } from "react";
 import DoneDetails from "./DoneDetails";
 
 const DoneList = () => {
-    const { completedBooks } = useContext(BookContext)
-    return (
+    const { userCompletedBooks } = useContext(BookContext)
+    return userCompletedBooks && (
         <section className="done-list">
-            {completedBooks.map(book => {
+            {userCompletedBooks.map(book => {
                 return <DoneDetails title={book.title} author={book.author} id={book.id} key={book.id} />
             })}
         </section>

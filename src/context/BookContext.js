@@ -7,9 +7,18 @@ export const BookContext = createContext()
 const BookContextProvider = (props) => {
     const [books, setBooks] = useState([])
     const [completedBooks, setCompletedBooks] = useState([])
+    const [userBooks, setUserBooks] = useState([])
+    const [userCompletedBooks, setUserCompletedBooks] = useState([])
+    const [user, setUser] = useState([])
+
+    //const isAuth = localStorage.getItem("isAuth")
+
+    // const userName = isAuth === true && auth.currentUser.displayName === null ? `${firstName} ${lastName}` : auth.currentUser.displayName
 
     const booksCollectionRef = collection(db, "books")
+    const usersCollectionRef = collection(db, "users")
     const completedBooksCollectionRef = collection(db, "completedBooks")
+
     const addBooks = async (title, author) => {
         await addDoc(booksCollectionRef, {
             title: title,
@@ -19,6 +28,14 @@ const BookContextProvider = (props) => {
                 id: auth.currentUser.uid
             },
             timestamp: serverTimestamp()
+        })
+    }
+
+    const addUsers = async (firstName, lastName) => {
+        await addDoc(usersCollectionRef, {
+            firstName: firstName,
+            lastName: lastName,
+            id: auth.currentUser.uid
         })
     }
 
@@ -50,22 +67,33 @@ const BookContextProvider = (props) => {
         const getBooks = async () => {
             const data = await getDocs(booksCollectionRef)
             setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+            auth.currentUser && setUserBooks(books.filter(book => auth.currentUser.uid === book.user.id))
         }
         getBooks()
-    }, [addBooks, removeBooks, deleteBooks, booksCollectionRef])
+    }, [booksCollectionRef, books])
 
 
     useEffect(() => {
         const getCompletedBooks = async () => {
             const data = await getDocs(completedBooksCollectionRef)
             setCompletedBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+            auth.currentUser && setUserCompletedBooks(completedBooks.filter(book => auth.currentUser.uid === book.user.id))
         }
         getCompletedBooks()
-    }, [removeBooks, deleteDoneBooks, completedBooksCollectionRef])
+    }, [completedBooksCollectionRef, completedBooks])
+
+    // useEffect(() => {
+    //     const getUsers = async () => {
+    //         const data = await getDocs(usersCollectionRef)
+    //         const users = data.docs.map((doc) => ({ ...doc.data() }))
+    //         setUser(users.filter(user => user.id === auth.currentUser.uid))
+    //     }
+    //     getUsers()
+    // }, [])
 
 
     return (
-        <BookContext.Provider value={{ books, addBooks, removeBooks, completedBooks, deleteBooks, deleteDoneBooks }}>
+        <BookContext.Provider value={{ books, addBooks, removeBooks, completedBooks, deleteBooks, deleteDoneBooks, userBooks, userCompletedBooks, addUsers, user, setUser }}>
             {props.children}
         </BookContext.Provider>
     );

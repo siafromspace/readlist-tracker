@@ -5,17 +5,29 @@ import { useNavigate } from "react-router-dom"
 const Logout = ({ setIsAuth }) => {
     const navigate = useNavigate()
     const signUserOut = () => {
-        signOut(auth).then(() => {
-            localStorage.clear()
-            setIsAuth(false)
-            navigate("/")
-        })
+        const confirmed = window.confirm("Are you sure you want to log out?")
+        if (confirmed) {
+            signOut(auth).then(() => {
+                localStorage.clear()
+                setIsAuth(false)
+                navigate("/")
+            })
+        }
+
     }
-    const confirmed = window.confirm("Are you sure you want to log out?")
-    if (confirmed) {
-        signUserOut()
+    const signOutExit = () => {
+        navigate("/")
     }
-    return null;
+
+    return (
+        <main>
+            <h1>Log out ?</h1>
+            <div className="signout">
+                <button onClick={signUserOut}>Yes</button>
+                <button onClick={signOutExit}>No</button>
+            </div>
+        </main>
+    );
 }
 
 export default Logout;

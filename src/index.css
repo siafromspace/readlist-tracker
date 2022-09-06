@@ -164,6 +164,20 @@ section > div h1 {
   text-align: center;
   padding: 0.5rem;
 }
+.signout {
+  display: flex;
+  gap: 1rem;
+}
+.signout button {
+  background-color: #262322;
+  color: #f2e5d7;
+  width: 100px;
+  height: 2rem;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+}
 @media (max-width: 854px) {
   .App {
     margin: 1rem;
